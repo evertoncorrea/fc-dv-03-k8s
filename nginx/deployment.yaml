@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codeedu-nginx
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: codeedu-nginx
+      tier: web
+
+  template:
+    metadata:
+      labels:
+        app: codeedu-nginx
+        tier: web
+    spec:
+      containers:
+        - image: evertoncorrea/codeedu-nginx
+          name: codeedu-nginx
+          ports:
+            - containerPort: 80
